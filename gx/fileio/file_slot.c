@@ -395,19 +395,19 @@ void slot_autodetect(int slot, int device, t_slot *ptr)
 //  return ret;
 //}
 
-int slot_load(int slot, int device)
-{
-  char filename[MAXPATHLEN];
-  unsigned long filesize, done = 0;
-  u8 *buffer;
+//int slot_load(int slot, int device)
+//{
+//  char filename[MAXPATHLEN];
+//  unsigned long filesize, done = 0;
+//  u8 *buffer;
 
-  /* File Type */
-  if (slot > 0)
-  {
-    GUI_MsgBoxOpen("Information","Loading State ...",1);
-  }
-  else
-  {
+//  /* File Type */
+//  if (slot > 0)
+//  {
+//    GUI_MsgBoxOpen("Information","Loading State ...",1);
+//  }
+//  else
+//  {
     if (!sram.on)
     {
       GUI_WaitPrompt("Error","Backup RAM is disabled !");
