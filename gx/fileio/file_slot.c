@@ -593,28 +593,28 @@ void slot_autodetect(int slot, int device, t_slot *ptr)
   return 1;
 }
 
-int slot_save(int slot, int device)
-{
-  char filename[MAXPATHLEN];
-  unsigned long filesize, done = 0;
-  u8 *buffer;
+//int slot_save(int slot, int device)
+//{
+//  char filename[MAXPATHLEN];
+//  unsigned long filesize, done = 0;
+//  u8 *buffer;
 
-  if (slot > 0)
-  {
-    GUI_MsgBoxOpen("Information","Saving State ...",1);
+//  if (slot > 0)
+//  {
+ //   GUI_MsgBoxOpen("Information","Saving State ...",1);
 
     /* allocate buffer */
-    buffer = (u8 *)memalign(32,STATE_SIZE);
-    if (!buffer)
-    {
-      GUI_WaitPrompt("Error","Unable to allocate memory !");
-      return 0;
-    }
+//    buffer = (u8 *)memalign(32,STATE_SIZE);
+//    if (!buffer)
+//    {
+//      GUI_WaitPrompt("Error","Unable to allocate memory !");
+//      return 0;
+//    }
 
-    filesize = state_save(buffer);
-  }
-  else
-  {
+//    filesize = state_save(buffer);
+//  }
+//  else
+//  {
     /* only save if SRAM is enabled */
     if (!sram.on)
     {
