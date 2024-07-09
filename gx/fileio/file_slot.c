@@ -344,10 +344,10 @@ void slot_autodetect(int slot, int device, t_slot *ptr)
 //  }
 //}
 
-int slot_delete(int slot, int device)
-{
-  char filename[MAXPATHLEN];
-  int ret = 0;
+//int slot_delete(int slot, int device)
+//{
+//  char filename[MAXPATHLEN];
+//  int ret = 0;
 
   if (!device)
   {
@@ -850,4 +850,4 @@ int slot_save(int slot, int device)
   }
 
   return 1;
-}
+//}
