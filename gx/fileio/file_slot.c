@@ -69,25 +69,28 @@ static u8 brm_format[0x40] =
  * better off doing a little bit more than that!
  *
  *****************************************************************************/
-static int CardMount(int slot)
-{
-  int tries = 0;
-#ifdef HW_RVL
-  *(unsigned long *) (0xCD006800) |= 1 << 13; /*** Disable Encryption ***/
-#else
-  *(unsigned long *) (0xCC006800) |= 1 << 13; /*** Disable Encryption ***/
-#endif
-  while (tries < 10)
-  {
-    VIDEO_WaitVSync ();
-    if (CARD_Mount(slot, SysArea, NULL) == CARD_ERROR_READY)
-      return 1;
-    else
-      EXI_ProbeReset ();
-    tries++;
-  }
-  return 0;
-}
+
+
+//static int CardMount(int slot)
+//{
+//  int tries = 0;
+//#ifdef HW_RVL
+//  *(unsigned long *) (0xCD006800) |= 1 << 13; /*** Disable Encryption ***/
+//#else
+//  *(unsigned long *) (0xCC006800) |= 1 << 13; /*** Disable Encryption ***/
+//#endif
+//  while (tries < 10)
+//  {
+//    VIDEO_WaitVSync ();
+//    if (CARD_Mount(slot, SysArea, NULL) == CARD_ERROR_READY)
+//      return 1;
+//    else
+//      EXI_ProbeReset ();
+//    tries++;
+//  }
+//  return 0;
+//}
+
 
 /****************************************************************************
  * Slot Management
