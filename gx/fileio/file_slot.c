@@ -718,32 +718,32 @@ int slot_save(int slot, int device)
     }
 
     /* Initialise the CARD system */
-    char action[64];
-    memset(&SysArea, 0, CARD_WORKAREA);
-    CARD_Init("GENP", "00");
+//    char action[64];
+//    memset(&SysArea, 0, CARD_WORKAREA);
+//    CARD_Init("GENP", "00");
 
     /* CARD slot */
-    device--;
+//    device--;
 
     /* Attempt to mount the card */
-    if (!CardMount(device))
-    {
-      GUI_WaitPrompt("Error","Unable to mount memory card");
-      free(buffer);
-      return 0;
-    }
+//    if (!CardMount(device))
+//    {
+//      GUI_WaitPrompt("Error","Unable to mount memory card");
+//      free(buffer);
+//      return 0;
+//    }
 
     /* Retrieve sector size */
-    u32 SectorSize = 0;
-    int CardError = CARD_GetSectorSize(device, &SectorSize);
-    if (!SectorSize)
-    {
-      sprintf(action, "Invalid sector size (%d)", CardError);
-      GUI_WaitPrompt("Error",action);
-      CARD_Unmount(device);
-      free(buffer);
-      return 0;
-    }
+//    u32 SectorSize = 0;
+//    int CardError = CARD_GetSectorSize(device, &SectorSize);
+//    if (!SectorSize)
+//    {
+//      sprintf(action, "Invalid sector size (%d)", CardError);
+//      GUI_WaitPrompt("Error",action);
+//      CARD_Unmount(device);
+//      free(buffer);
+//      return 0;
+//    }
 
     /* Build output buffer */
     u8 *out = (u8 *)memalign(32, filesize + 2112 + 4);
