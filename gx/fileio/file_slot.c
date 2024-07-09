@@ -506,44 +506,44 @@ int slot_load(int slot, int device)
 //    }
 
     /* Open file */
-    card_file CardFile;
-    CardError = CARD_Open(device, filename, &CardFile);
-    if (CardError)
-    {
-      sprintf(action, "Unable to open file (%d)", CardError);
-      GUI_WaitPrompt("Error",action);
-      CARD_Unmount(device);
-      return 0;
-    }
+//    card_file CardFile;
+//    CardError = CARD_Open(device, filename, &CardFile);
+//    if (CardError)
+//    {
+//      sprintf(action, "Unable to open file (%d)", CardError);
+//      GUI_WaitPrompt("Error",action);
+//      CARD_Unmount(device);
+//      return 0;
+//    }
 
     /* Get file size */
-    filesize = CardFile.len;
-    if (filesize % SectorSize)
-    {
-      filesize = ((filesize / SectorSize) + 1) * SectorSize;
-    }
+//    filesize = CardFile.len;
+//    if (filesize % SectorSize)
+//    {
+//      filesize = ((filesize / SectorSize) + 1) * SectorSize;
+//    }
 
     /* Allocate buffer */
-    u8 *in = (u8 *)memalign(32, filesize);
-    if (!in)
-    {
-      GUI_WaitPrompt("Error","Unable to allocate memory !");
-      CARD_Close(&CardFile);
-      CARD_Unmount(device);
-      return 0;
-    }
+//    u8 *in = (u8 *)memalign(32, filesize);
+//    if (!in)
+//    {
+//      GUI_WaitPrompt("Error","Unable to allocate memory !");
+//      CARD_Close(&CardFile);
+//      CARD_Unmount(device);
+//      return 0;
+//    }
 
     /* Read file sectors */
-    while (filesize > 0)
-    {
-      CARD_Read(&CardFile, &in[done], SectorSize, done);
-      done += SectorSize;
-      filesize -= SectorSize;
-    }
+//    while (filesize > 0)
+//   {
+//      CARD_Read(&CardFile, &in[done], SectorSize, done);
+//      done += SectorSize;
+//      filesize -= SectorSize;
+//    }
 
     /* Close file */
-    CARD_Close(&CardFile);
-    CARD_Unmount(device);
+//    CARD_Close(&CardFile);
+//    CARD_Unmount(device);
 
     /* Uncompressed file size */
     memcpy(&filesize, in + 2112, 4);
