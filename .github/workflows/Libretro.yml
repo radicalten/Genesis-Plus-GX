@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Compile
       run: |
-        make -f Makefile.libretro -j$(nproc)
+        make -f Makefile.libretro platform=wii -j$(nproc)
     - name: Upload
       uses: actions/upload-artifact@v4
       with:
