@@ -313,36 +313,36 @@ void slot_autodetect(int slot, int device, t_slot *ptr)
       sprintf(filename,"MD-%04X.srm", rominfo.realchecksum);
 
     /* Initialise the CARD system */
-    memset(&SysArea, 0, CARD_WORKAREA);
-    CARD_Init("GENP", "00");
+ //   memset(&SysArea, 0, CARD_WORKAREA);
+ //   CARD_Init("GENP", "00");
 
     /* CARD slot */
-    device--;
+//    device--;
 
     /* Mount CARD */
-    if (CardMount(device))
+//    if (CardMount(device))
     {
       /* Open file */
-      card_file CardFile;
-      if (CARD_Open(device, filename, &CardFile) == CARD_ERROR_READY)
-      {
+//      card_file CardFile;
+//      if (CARD_Open(device, filename, &CardFile) == CARD_ERROR_READY)
+//      {
         /* Retrieve date & close */
-        card_stat CardStatus;
-        CARD_GetStatus(device, CardFile.filenum, &CardStatus);
-        time_t rawtime = CardStatus.time;
-        struct tm *timeinfo = localtime(&rawtime);
-        ptr->year = 1900 + timeinfo->tm_year;
-        ptr->month = timeinfo->tm_mon + 1;
-        ptr->day = timeinfo->tm_mday;
-        ptr->hour = timeinfo->tm_hour;
-        ptr->min = timeinfo->tm_min;
-        CARD_Close(&CardFile);
-        ptr->valid = 1;
-      }
-      CARD_Unmount(device);
-    }
-  }
-}
+//        card_stat CardStatus;
+//        CARD_GetStatus(device, CardFile.filenum, &CardStatus);
+//        time_t rawtime = CardStatus.time;
+//        struct tm *timeinfo = localtime(&rawtime);
+//        ptr->year = 1900 + timeinfo->tm_year;
+//        ptr->month = timeinfo->tm_mon + 1;
+//        ptr->day = timeinfo->tm_mday;
+//       ptr->hour = timeinfo->tm_hour;
+//        ptr->min = timeinfo->tm_min;
+//        CARD_Close(&CardFile);
+//        ptr->valid = 1;
+//      }
+//      CARD_Unmount(device);
+//    }
+//  }
+//}
 
 int slot_delete(int slot, int device)
 {
@@ -377,23 +377,23 @@ int slot_delete(int slot, int device)
       sprintf(filename,"MD-%04X.srm", rominfo.realchecksum);
 
     /* Initialise the CARD system */
-    memset(&SysArea, 0, CARD_WORKAREA);
-    CARD_Init("GENP", "00");
+ //   memset(&SysArea, 0, CARD_WORKAREA);
+ //   CARD_Init("GENP", "00");
 
     /* CARD slot */
-    device--;
+//    device--;
 
     /* Mount CARD */
-    if (CardMount(device))
-    {
+//    if (CardMount(device))
+//    {
       /* Delete file */
-      ret = CARD_Delete(device,filename);
-      CARD_Unmount(device);
-    }
-  }
+//      ret = CARD_Delete(device,filename);
+//      CARD_Unmount(device);
+//    }
+//  }
 
-  return ret;
-}
+//  return ret;
+//}
 
 int slot_load(int slot, int device)
 {
