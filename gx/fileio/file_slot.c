@@ -495,15 +495,15 @@ int slot_load(int slot, int device)
 //    }
     
     /* Retrieve the sector size */
-    u32 SectorSize = 0;
-    int CardError = CARD_GetSectorSize(device, &SectorSize);
-    if (!SectorSize)
-    {
-      sprintf(action, "Invalid sector size (%d)", CardError);
-      GUI_WaitPrompt("Error",action);
-      CARD_Unmount(device);
-      return 0;
-    }
+//    u32 SectorSize = 0;
+//    int CardError = CARD_GetSectorSize(device, &SectorSize);
+//   if (!SectorSize)
+//    {
+//      sprintf(action, "Invalid sector size (%d)", CardError);
+//      GUI_WaitPrompt("Error",action);
+//      CARD_Unmount(device);
+//      return 0;
+//    }
 
     /* Open file */
     card_file CardFile;
