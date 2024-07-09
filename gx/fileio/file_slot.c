@@ -48,6 +48,9 @@
  * libOGC CARD System Work Area
  */
 
+// https://libogc.devkitpro.org/card_8h.html #define 	CARD_WORKAREA_SIZE   (5*8*1024) works with devkitpro/ppc:latest
+// https://buildbot.libretro.com/doxygen/a06293.html#details retroarch fork of libogc uses the old #define 	CARD_WORKAREA   (5*8*1024)
+
 static u8 SysArea[CARD_WORKAREA_SIZE] ATTRIBUTE_ALIGN (32);
 
 /* Mega CD backup RAM stuff */
