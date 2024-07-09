@@ -480,19 +480,19 @@ int slot_load(int slot, int device)
     }
 
     /* Initialise the CARD system */
-    char action[64];
-    memset(&SysArea, 0, CARD_WORKAREA);
-    CARD_Init("GENP", "00");
+//    char action[64];
+//    memset(&SysArea, 0, CARD_WORKAREA);
+//    CARD_Init("GENP", "00");
 
     /* CARD slot */
-    device--;
+//    device--;
 
     /* Attempt to mount the card */
-    if (!CardMount(device))
+//    if (!CardMount(device))
     {
-      GUI_WaitPrompt("Error","Unable to mount memory card");
-      return 0;
-    }
+//      GUI_WaitPrompt("Error","Unable to mount memory card");
+//      return 0;
+//    }
     
     /* Retrieve the sector size */
     u32 SectorSize = 0;
