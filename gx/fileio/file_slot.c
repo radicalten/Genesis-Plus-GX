@@ -546,20 +546,20 @@ int slot_load(int slot, int device)
 //    CARD_Unmount(device);
 
     /* Uncompressed file size */
-    memcpy(&filesize, in + 2112, 4);
-    buffer = (u8 *)memalign(32, filesize);
-    if (!buffer)
-    {
-      free(in);
-      GUI_WaitPrompt("Error","Unable to allocate memory !");
-      return 0;
-    }
+//    memcpy(&filesize, in + 2112, 4);
+//    buffer = (u8 *)memalign(32, filesize);
+//    if (!buffer)
+//    {
+//      free(in);
+//      GUI_WaitPrompt("Error","Unable to allocate memory !");
+//      return 0;
+//    }
 
     /* Uncompress file */
-    uncompress ((Bytef *)buffer, &filesize, (Bytef *)(in + 2112 + 4), done - 2112 - 4);
-    done = filesize;
-    free(in);
-  }
+//    uncompress ((Bytef *)buffer, &filesize, (Bytef *)(in + 2112 + 4), done - 2112 - 4);
+//    done = filesize;
+//    free(in);
+//  }
 
   if (slot > 0)
   {
@@ -746,90 +746,90 @@ int slot_save(int slot, int device)
 //    }
 
     /* Build output buffer */
-    u8 *out = (u8 *)memalign(32, filesize + 2112 + 4);
-    if (!out)
-    {
-      GUI_WaitPrompt("Error","Unable to allocate memory !");
-      CARD_Unmount(device);
-      free(buffer);
-      return 0;
-    }
+//    u8 *out = (u8 *)memalign(32, filesize + 2112 + 4);
+//    if (!out)
+//    {
+//      GUI_WaitPrompt("Error","Unable to allocate memory !");
+//      CARD_Unmount(device);
+//      free(buffer);
+//      return 0;
+//    }
 
     /* Memory Card file header */
-    char comment[2][32] = { {"Genesis Plus GX"}, {"SRAM Save"} };
-    strcpy (comment[1], filename);
-    memcpy (&out[0], &icon, 2048);
-    memcpy (&out[2048], &comment[0], 64);
+//    char comment[2][32] = { {"Genesis Plus GX"}, {"SRAM Save"} };
+//    strcpy (comment[1], filename);
+//    memcpy (&out[0], &icon, 2048);
+//    memcpy (&out[2048], &comment[0], 64);
 
     /* uncompressed size */
-    done = filesize;
-    memcpy(&out[2112], &done, 4);
+//    done = filesize;
+//    memcpy(&out[2112], &done, 4);
   
     /* compress file */
-    compress2 ((Bytef *)&out[2112 + 4], &filesize, (Bytef *)buffer, done, 9);
+//    compress2 ((Bytef *)&out[2112 + 4], &filesize, (Bytef *)buffer, done, 9);
 
     /* Adjust file size */
-    filesize = filesize + 4 + 2112;
-    if (filesize % SectorSize)
-    {
-      filesize = ((filesize / SectorSize) + 1) * SectorSize;
-    }
+//    filesize = filesize + 4 + 2112;
+//    if (filesize % SectorSize)
+//    {
+//      filesize = ((filesize / SectorSize) + 1) * SectorSize;
+//    }
 
     /* Check if file already exists */
-    card_file CardFile;
-    if (CARD_Open(device, filename, &CardFile) == CARD_ERROR_READY)
-    {
-      int size = filesize - CardFile.len;
-      CARD_Close(&CardFile);
-      memset(&CardFile,0,sizeof(CardFile));
+//    card_file CardFile;
+//    if (CARD_Open(device, filename, &CardFile) == CARD_ERROR_READY)
+//    {
+//      int size = filesize - CardFile.len;
+//      CARD_Close(&CardFile);
+//      memset(&CardFile,0,sizeof(CardFile));
 
       /* Check file new size */
-      if (size > 0)
-      {
-        CardError = CARD_Create(device, "TEMP", size, &CardFile);
-        if (CardError)
-        {
-          sprintf(action, "Unable to increase file size (%d)", CardError);
-          GUI_WaitPrompt("Error",action);
-          CARD_Unmount(device);
-          free(out);
-          free(buffer);
-          return 0;
-        }
+//      if (size > 0)
+//      {
+//        CardError = CARD_Create(device, "TEMP", size, &CardFile);
+//        if (CardError)
+//        {
+//          sprintf(action, "Unable to increase file size (%d)", CardError);
+//          GUI_WaitPrompt("Error",action);
+//          CARD_Unmount(device);
+//          free(out);
+//          free(buffer);
+//          return 0;
+//        }
 
         /* delete temporary file */
-        CARD_Close(&CardFile);
-        memset(&CardFile,0,sizeof(CardFile));
-        CARD_Delete(device, "TEMP");
-      }
+//        CARD_Close(&CardFile);
+//        memset(&CardFile,0,sizeof(CardFile));
+//        CARD_Delete(device, "TEMP");
+//      }
 
       /* delete previously existing file */
-      CARD_Delete(device, filename);
-    }
+//      CARD_Delete(device, filename);
+//    }
 
     /* Create a new file */
-    CardError = CARD_Create(device, filename, filesize, &CardFile);
-    if (CardError)
-    {
-      sprintf(action, "Unable to create file (%d)", CardError);
-      GUI_WaitPrompt("Error",action);
-      CARD_Unmount(device);
-      free(out);
-      free(buffer);
-      return 0;
-    }
+//    CardError = CARD_Create(device, filename, filesize, &CardFile);
+//    if (CardError)
+//    {
+//      sprintf(action, "Unable to create file (%d)", CardError);
+//      GUI_WaitPrompt("Error",action);
+//      CARD_Unmount(device);
+//      free(out);
+//      free(buffer);
+//      return 0;
+//    }
 
     /* Update file informations */
-    time_t rawtime;
-    time(&rawtime);
-    card_stat CardStatus;
-    CARD_GetStatus(device, CardFile.filenum, &CardStatus);
-    CardStatus.icon_addr = 0x0;
-    CardStatus.icon_fmt = 2;
-    CardStatus.icon_speed = 1;
-    CardStatus.comment_addr = 2048;
-    CardStatus.time = rawtime;
-    CARD_SetStatus(device, CardFile.filenum, &CardStatus);
+//    time_t rawtime;
+//    time(&rawtime);
+//    card_stat CardStatus;
+//    CARD_GetStatus(device, CardFile.filenum, &CardStatus);
+//    CardStatus.icon_addr = 0x0;
+//    CardStatus.icon_fmt = 2;
+//    CardStatus.icon_speed = 1;
+//    CardStatus.comment_addr = 2048;
+//    CardStatus.time = rawtime;
+//    CARD_SetStatus(device, CardFile.filenum, &CardStatus);
 
     /* Write file sectors */
     while (filesize > 0)
