@@ -48,7 +48,7 @@
  * libOGC CARD System Work Area
  */
 
-static u8 SysArea[CARD_WORKAREA_SIZE] ATTRIBUTE_ALIGN (32);
+static u8 SysArea[CARD_WORKAREA_SIZE_SIZE] ATTRIBUTE_ALIGN (32);
 
 /* Mega CD backup RAM stuff */
 static u32 brm_crc[2];
@@ -310,7 +310,7 @@ void slot_autodetect(int slot, int device, t_slot *ptr)
       sprintf(filename,"MD-%04X.srm", rominfo.realchecksum);
 
     /* Initialise the CARD system */
-    memset(&SysArea, 0, CARD_WORKAREA);
+    memset(&SysArea, 0, CARD_WORKAREA_SIZE);
     CARD_Init("GENP", "00");
 
     /* CARD slot */
@@ -374,7 +374,7 @@ int slot_delete(int slot, int device)
       sprintf(filename,"MD-%04X.srm", rominfo.realchecksum);
 
     /* Initialise the CARD system */
-    memset(&SysArea, 0, CARD_WORKAREA);
+    memset(&SysArea, 0, CARD_WORKAREA_SIZE);
     CARD_Init("GENP", "00");
 
     /* CARD slot */
@@ -478,7 +478,7 @@ int slot_load(int slot, int device)
 
     /* Initialise the CARD system */
     char action[64];
-    memset(&SysArea, 0, CARD_WORKAREA);
+    memset(&SysArea, 0, CARD_WORKAREA_SIZE);
     CARD_Init("GENP", "00");
 
     /* CARD slot */
@@ -716,7 +716,7 @@ int slot_save(int slot, int device)
 
     /* Initialise the CARD system */
     char action[64];
-    memset(&SysArea, 0, CARD_WORKAREA);
+    memset(&SysArea, 0, CARD_WORKAREA_SIZE);
     CARD_Init("GENP", "00");
 
     /* CARD slot */
