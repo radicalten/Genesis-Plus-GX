@@ -676,7 +676,7 @@ void slot_autodetect(int slot, int device, t_slot *ptr)
     {
       GUI_WaitPrompt("Error","Unable to open file !");
       free(buffer);
-      return 0;
+    //  return 0;
     }
 
     /* Write from buffer (2k blocks) */
@@ -832,22 +832,22 @@ void slot_autodetect(int slot, int device, t_slot *ptr)
 //    CARD_SetStatus(device, CardFile.filenum, &CardStatus);
 
     /* Write file sectors */
-    while (filesize > 0)
-    {
-      CARD_Write(&CardFile, &out[done], SectorSize, done);
-      filesize -= SectorSize;
-      done += SectorSize;
-    }
+//    while (filesize > 0)
+//    {
+//      CARD_Write(&CardFile, &out[done], SectorSize, done);
+//      filesize -= SectorSize;
+//      done += SectorSize;
+//    }
 
     /* Close file */
-    CARD_Close(&CardFile);
-    CARD_Unmount(device);
-    free(out);
-    free(buffer);
+//    CARD_Close(&CardFile);
+//    CARD_Unmount(device);
+//    free(out);
+//    free(buffer);
 
     /* Close message box */
-    GUI_MsgBoxClose();
-  }
+//    GUI_MsgBoxClose();
+//  }
 
   return 1;
-//}
+}
