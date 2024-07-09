@@ -48,7 +48,7 @@
  * libOGC CARD System Work Area
  */
 
-static u8 SysArea[CARD_WORKAREA_SIZE_SIZE] ATTRIBUTE_ALIGN (32);
+static u8 SysArea[CARD_WORKAREA_SIZE] ATTRIBUTE_ALIGN (32);
 
 /* Mega CD backup RAM stuff */
 static u32 brm_crc[2];
